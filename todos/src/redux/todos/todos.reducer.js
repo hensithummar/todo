@@ -1,4 +1,13 @@
-import { INCREMENT, DECREMENT, ADDTASKINTODO } from "./todos.types";
+import {
+  INCREMENT,
+  DECREMENT,
+  ADDTASKINTODO,
+  ADDTASKINDOING,
+  REMOVEFROMTODO,
+  REMOVEFROMDOING,
+  ADDTASKINDONE,
+  REMOVEFROMDONE,
+} from "./todos.types";
 
 const INITIAL_STATE = {
   todo: [],
@@ -13,13 +22,31 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         todo: [...state?.todo, { ...action.payload }],
       };
-
-    case DECREMENT:
+    case REMOVEFROMTODO:
       return {
         ...state,
-        count: state.count - 1,
+        todo: action?.payload,
       };
-
+    case ADDTASKINDOING:
+      return {
+        ...state,
+        doing: [...state?.doing, { ...action.payload }],
+      };
+    case REMOVEFROMDOING:
+      return {
+        ...state,
+        doing: action?.payload,
+      };
+    case ADDTASKINDONE:
+      return {
+        ...state,
+        done: [...state?.done, { ...action.payload }],
+      };
+    case REMOVEFROMDONE:
+      return {
+        ...state,
+        done: action?.payload,
+      };
     default:
       return state;
   }
