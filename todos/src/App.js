@@ -1,20 +1,13 @@
-import { Box } from "@mui/material";
 import React from "react";
-import Doing from "./presentation/Doing";
-import Done from "./presentation/Done";
-import Todo from "./presentation/Todo";
-import TodoForm from "./presentation/TodoForm";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import TrololoBoard from "./presentation/TrololoBoard";
 
 const App = () => {
   return (
-    <>
-      <TodoForm />
-      <Box sx={{ display: "flex" }}>
-        <Todo />
-        <Doing />
-        <Done />
-      </Box>
-    </>
+    <DndProvider backend={HTML5Backend}>
+      <TrololoBoard />
+    </DndProvider>
   );
 };
 
